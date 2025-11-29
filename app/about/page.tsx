@@ -5,13 +5,6 @@ import { motion } from 'framer-motion';
 import { NavBar } from '../components/NavBar';
 import { Footer } from '../components/Footer';
 
-'use client';
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { NavBar } from '../components/NavBar';
-import { Footer } from '../components/Footer';
-
 export default function AboutPage() {
     return (
         <main className="bg-[#0F172A] min-h-screen text-slate-200 font-sans selection:bg-sky-400 selection:text-[#0F172A]">
