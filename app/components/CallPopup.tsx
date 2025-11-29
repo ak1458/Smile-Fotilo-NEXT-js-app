@@ -13,4 +13,39 @@ export const CallPopup = () => {
 
         return () => clearTimeout(timer);
     }, []);
+
+    return (
+        <AnimatePresence>
+            {isVisible && (
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 50 }}
+                    className="fixed bottom-8 left-8 z-50 max-w-sm"
+                >
+                    <div className="bg-[#1E293B] border border-indigo-500/30 p-4 rounded-2xl shadow-2xl relative">
+                        <button
+                            onClick={() => setIsVisible(false)}
+                            className="absolute -top-3 -right-3 bg-red-500 text-white rounded-full p-1.5 hover:bg-red-600 shadow-md transition-colors z-10"
+                        >
+                            <span className="material-symbols-rounded text-sm font-bold">close</span>
+                        </button>
+
+                        <div className="flex items-center gap-4">
+                            <div className="bg-indigo-500/10 p-3 rounded-full text-indigo-400 animate-pulse">
+                                <span className="material-symbols-rounded text-2xl">call</span>
+                            </div>
+                            <div>
+                                <h4 className="text-white font-bold text-sm">Ready to scale?</h4>
+                                <p className="text-slate-400 text-xs mb-2">Book a free strategy call with us.</p>
+                                <a href="tel:+919453878422" className="text-indigo-400 text-xs font-bold hover:underline">
+                                    Call +91 9453878422
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
 };
