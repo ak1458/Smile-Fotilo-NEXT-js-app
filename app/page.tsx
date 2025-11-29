@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 // import { sendContactEmail } from './actions'; // Removed for static export
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
+import { BackToTop } from './components/BackToTop';
+import { CallPopup } from './components/CallPopup';
 import Link from 'next/link';
 
 // --- Configuration ---
@@ -25,7 +27,7 @@ const theme = {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden min-h-screen flex items-center bg-[#0F172A]">
+    <section id="home" className="relative pt-20 pb-12 lg:pt-28 lg:pb-20 overflow-hidden min-h-screen flex items-center bg-[#0F172A]">
       {/* Anti-Gravity Background Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -57,8 +59,8 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-50 leading-[1.1] mb-6 tracking-tight"
         >
-          We Build Digital Experiences for <br className="hidden md:block" />
-          Brands in <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-indigo-400">Gonda & Lucknow</span>
+          We Build World-Class Digital Experiences for <br className="hidden md:block" />
+          Global Brands
         </motion.h1>
 
         <motion.p
@@ -77,7 +79,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <a href="#work" className="px-8 py-4 rounded-full bg-sky-400 text-[#0F172A] font-bold text-lg hover:bg-white transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] min-w-[180px]">
+          <a href="#work" className="px-8 py-4 rounded-full bg-slate-100 text-[#0F172A] font-bold text-lg hover:bg-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] min-w-[180px]">
             View Our Work
           </a>
           <a href="#contact" className="px-8 py-4 rounded-full bg-transparent border border-slate-600 text-slate-200 font-medium text-lg hover:border-sky-400 hover:text-sky-400 transition-all min-w-[180px]">
@@ -97,7 +99,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-16 bg-[#0F172A] relative">
+    <section id="services" className="py-12 bg-[#0F172A] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -136,13 +138,13 @@ const Services = () => {
 
 const Portfolio = () => {
   const projects = [
-    { title: 'PulseKart', category: 'Own Venture', desc: 'Complete E-commerce Architecture.', img: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=800&q=80' },
-    { title: 'KapdaFactory', category: 'E-Commerce', desc: 'Scale Up & Optimization.', img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80' },
+    { title: 'KapdaFactory', category: 'E-Commerce', desc: 'Scale Up & Optimization.', img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80' },
     { title: 'Veloria Vault', category: 'Luxury Brand', desc: 'Premium Leather Bags Store.', img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80' },
+    { title: 'PulseKart', category: 'Own Venture', desc: 'Complete E-commerce Architecture.', img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80' },
   ];
 
   return (
-    <section id="work" className="py-16 bg-[#0F172A]">
+    <section id="work" className="py-12 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -182,7 +184,7 @@ const Portfolio = () => {
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-16 bg-[#0F172A]">
+    <section id="pricing" className="py-12 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -247,18 +249,25 @@ const Contact = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsPending(true);
+    // Construct mailto link
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get('name');
+    const phone = formData.get('phone');
+    const email = formData.get('email');
+    const projectType = formData.get('projectType');
+    const message = formData.get('message');
 
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const mailtoLink = `mailto:ashrafkamal1458@gmail.com?subject=New Project Inquiry: ${projectType}&body=Name: ${name}%0D%0APhone: ${phone}%0D%0AEmail: ${email}%0D%0AProject Type: ${projectType}%0D%0A%0D%0AMessage:%0D%0A${message}`;
 
-    setStatus({ success: true, message: 'Message sent successfully!' });
+    window.location.href = mailtoLink;
+
+    setStatus({ success: true, message: 'Opening email client...' });
     (event.target as HTMLFormElement).reset();
     setIsPending(false);
   };
 
   return (
-    <section id="contact" className="py-16 bg-[#1E293B] relative border-t border-white/5">
+    <section id="contact" className="py-12 bg-[#1E293B] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Info */}
@@ -362,6 +371,8 @@ export default function Home() {
       <Pricing />
       <Contact />
       <Footer />
+      <BackToTop />
+      <CallPopup />
     </main>
   );
 }
