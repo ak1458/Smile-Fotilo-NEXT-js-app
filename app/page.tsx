@@ -8,6 +8,7 @@ import { Footer } from './components/Footer';
 import { BackToTop } from './components/BackToTop';
 import { CallPopup } from './components/CallPopup';
 import { CenterPopup } from './components/CenterPopup';
+import { ChatSupport } from './components/ChatSupport';
 import Link from 'next/link';
 
 // --- Configuration ---
@@ -375,6 +376,7 @@ export default function Home() {
       <BackToTop />
       <CallPopup />
       <CenterPopup />
+      <ChatSupport />
     </main>
   );
 }
