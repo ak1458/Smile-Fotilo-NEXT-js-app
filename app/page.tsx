@@ -291,7 +291,7 @@ const Contact = () => {
               </div>
               <div className="flex items-center gap-4">
                 <span className="material-symbols-rounded text-indigo-400 bg-[#020617] p-3 rounded-full">mail</span>
-                Brands in <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400">Gonda & Lucknow</span>
+                Brands in <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400">Gonda, Greater Noida, Lucknow & Ayodhya</span>
               </div>
               {/* Address Removed as requested */}
             </div>

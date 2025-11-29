@@ -26,9 +26,9 @@ export const CallPopup = () => {
                     <div className="bg-[#1E293B] border border-indigo-500/30 p-4 rounded-2xl shadow-2xl relative">
                         <button
                             onClick={() => setIsVisible(false)}
-                            className="absolute -top-3 -right-3 bg-red-500 text-white rounded-full p-1.5 hover:bg-red-600 shadow-md transition-colors z-10"
+                            className="absolute -top-3 -right-3 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors z-10 border-2 border-[#1E293B]"
                         >
-                            <span className="material-symbols-rounded text-sm font-bold">close</span>
+                            <span className="material-symbols-rounded text-xs font-bold">close</span>
                         </button>
 
                         <div className="flex items-center gap-4">
