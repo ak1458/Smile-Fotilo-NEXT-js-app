@@ -7,14 +7,15 @@ import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { BackToTop } from './components/BackToTop';
 import { CallPopup } from './components/CallPopup';
+import { CenterPopup } from './components/CenterPopup';
 import Link from 'next/link';
 
 // --- Configuration ---
 const theme = {
   colors: {
-    bg: '#0F172A',      // Deep Void Blue
-    surface: '#1E293B', // Surface Slate
-    accent: '#38BDF8',  // Electric Blue (Tech)
+    bg: '#020617',      // Darker Slate (2025)
+    surface: '#0F172A', // Surface Slate
+    accent: '#6366F1',  // Indigo (Premium)
     text: '#F8FAFC',    // White Text
     body: '#94A3B8',    // Grey Text
     success: '#10B981', // Emerald Green (Growth)
@@ -27,13 +28,13 @@ const theme = {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative pt-20 pb-12 lg:pt-28 lg:pb-20 overflow-hidden min-h-screen flex items-center bg-[#0F172A]">
+    <section id="home" className="relative pt-20 pb-12 lg:pt-28 lg:pb-20 overflow-hidden min-h-screen flex items-center bg-[#020617]">
       {/* Anti-Gravity Background Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ x: [0, 50, 0], y: [0, -50, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-[128px]"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[128px]"
         />
         <motion.div
           animate={{ x: [0, -30, 0], y: [0, 30, 0] }}
@@ -70,7 +71,7 @@ const Hero = () => {
           className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed"
         >
           Web Design. SEO. Strategic Branding. <br />
-          The agency behind <span className="text-emerald-400 font-semibold border-b border-emerald-400/30">successful digital brands</span>.
+          The agency behind <span className="text-indigo-400 font-semibold border-b border-indigo-400/30">successful digital brands</span>.
         </motion.p>
 
         <motion.div
@@ -79,10 +80,10 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <a href="#work" className="px-8 py-4 rounded-full bg-slate-100 text-[#0F172A] font-bold text-lg hover:bg-white transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] min-w-[180px]">
+          <a href="#work" className="px-8 py-4 rounded-full bg-indigo-600 text-white font-bold text-lg hover:bg-indigo-500 transition-all shadow-[0_0_20px_rgba(99,102,241,0.3)] min-w-[180px]">
             View Our Work
           </a>
-          <a href="#contact" className="px-8 py-4 rounded-full bg-transparent border border-slate-600 text-slate-200 font-medium text-lg hover:border-sky-400 hover:text-sky-400 transition-all min-w-[180px]">
+          <a href="#contact" className="px-8 py-4 rounded-full bg-transparent border border-slate-700 text-slate-300 font-medium text-lg hover:border-indigo-400 hover:text-indigo-400 transition-all min-w-[180px]">
             Book Strategy Call
           </a>
         </motion.div>
@@ -99,7 +100,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-12 bg-[#0F172A] relative">
+    <section id="services" className="py-12 bg-[#020617] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -108,7 +109,7 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sky-400 font-bold tracking-wider uppercase text-sm">Our Expertise</span>
+          <span className="text-indigo-400 font-bold tracking-wider uppercase text-sm">Our Expertise</span>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-50 mt-3">Digital Solutions</h2>
         </motion.div>
 
@@ -121,9 +122,9 @@ const Services = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="bg-[#1E293B] p-8 rounded-3xl border border-white/5 hover:border-sky-400/50 hover:shadow-[0_10px_40px_-10px_rgba(56,189,248,0.1)] transition-all"
+              className="bg-[#0F172A] p-8 rounded-3xl border border-white/5 hover:border-indigo-500/50 hover:shadow-[0_10px_40px_-10px_rgba(99,102,241,0.1)] transition-all"
             >
-              <div className="w-14 h-14 rounded-xl bg-[#0F172A] border border-sky-400/20 flex items-center justify-center text-sky-400 mb-6">
+              <div className="w-14 h-14 rounded-xl bg-[#020617] border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-6">
                 <span className="material-symbols-rounded text-3xl">{service.icon}</span>
               </div>
               <h3 className="text-xl font-bold text-slate-50 mb-4">{service.title}</h3>
@@ -139,12 +140,12 @@ const Services = () => {
 const Portfolio = () => {
   const projects = [
     { title: 'KapdaFactory', category: 'E-Commerce', desc: 'Scale Up & Optimization.', img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80' },
-    { title: 'Veloria Vault', category: 'Luxury Brand', desc: 'Premium Leather Bags Store.', img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80' },
-    { title: 'PulseKart', category: 'Own Venture', desc: 'Complete E-commerce Architecture.', img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80' },
+    { title: 'Veloria Vault', category: 'Luxury Brand', desc: 'Premium Leather Bags Store.', img: '/veloria-vault.jpg' },
+    { title: 'PulseKart', category: 'Pharma & Health', desc: 'Complete E-commerce Architecture.', img: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=800&q=80' },
   ];
 
   return (
-    <section id="work" className="py-12 bg-[#0F172A]">
+    <section id="work" className="py-12 bg-[#020617]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -153,7 +154,7 @@ const Portfolio = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sky-400 font-bold tracking-wider uppercase text-sm">Portfolio</span>
+          <span className="text-indigo-400 font-bold tracking-wider uppercase text-sm">Portfolio</span>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-50 mt-3">Selected Works</h2>
         </motion.div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -169,7 +170,7 @@ const Portfolio = () => {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 border border-white/5">
                 <img src={project.img} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-sky-500 text-[#0F172A] text-xs font-bold rounded-full">{project.category}</span>
+                  <span className="px-3 py-1 bg-indigo-500 text-white text-xs font-bold rounded-full">{project.category}</span>
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-slate-50 mb-2">{project.title}</h3>
@@ -184,7 +185,7 @@ const Portfolio = () => {
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-12 bg-[#0F172A]">
+    <section id="pricing" className="py-12 bg-[#020617]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -193,7 +194,7 @@ const Pricing = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sky-400 font-bold tracking-wider uppercase text-sm">Packages</span>
+          <span className="text-indigo-400 font-bold tracking-wider uppercase text-sm">Packages</span>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-50 mt-3">Simple Pricing</h2>
         </motion.div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -203,12 +204,12 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="p-8 rounded-3xl bg-[#1E293B] border border-white/5 hover:border-sky-400 transition-all"
+            className="p-8 rounded-3xl bg-[#0F172A] border border-white/5 hover:border-indigo-400 transition-all"
           >
-            <div className="text-sky-400 font-bold uppercase text-xs mb-2">The Starter</div>
+            <div className="text-indigo-400 font-bold uppercase text-xs mb-2">The Starter</div>
             <h3 className="text-2xl font-bold text-slate-50 mb-4">₹15k <span className="text-sm text-slate-400 font-normal">/ project</span></h3>
             <p className="text-sm text-slate-400 mb-8">For doctors, clinics, or small shops needing a professional face.</p>
-            <Link href="/pricing" className="block w-full py-3 rounded-xl border border-white/10 text-center font-bold text-slate-50 hover:bg-sky-400 hover:text-[#0F172A] transition-colors">Get Started</Link>
+            <Link href="/pricing" className="block w-full py-3 rounded-xl border border-white/10 text-center font-bold text-slate-50 hover:bg-indigo-500 hover:text-white transition-colors">Get Started</Link>
           </motion.div>
           {/* Growth */}
           <motion.div
@@ -216,13 +217,13 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-8 rounded-3xl bg-[#1E293B] border border-sky-400 relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(56,189,248,0.15)]"
+            className="p-8 rounded-3xl bg-[#0F172A] border border-indigo-500 relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(99,102,241,0.15)]"
           >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-sky-400 text-[#0F172A] text-xs font-bold px-3 py-1 rounded-full uppercase">Popular</div>
-            <div className="text-sky-400 font-bold uppercase text-xs mb-2">The Growth</div>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Popular</div>
+            <div className="text-indigo-400 font-bold uppercase text-xs mb-2">The Growth</div>
             <h3 className="text-2xl font-bold text-slate-50 mb-4">₹35k <span className="text-sm text-slate-400 font-normal">/ starting</span></h3>
             <p className="text-sm text-slate-400 mb-8">For retail brands ready to sell online. Dynamic content management.</p>
-            <Link href="/pricing" className="block w-full py-3 rounded-xl bg-sky-400 text-center font-bold text-[#0F172A] hover:bg-white transition-colors">Choose Growth</Link>
+            <Link href="/pricing" className="block w-full py-3 rounded-xl bg-indigo-500 text-center font-bold text-white hover:bg-white hover:text-[#020617] transition-colors">Choose Growth</Link>
           </motion.div>
           {/* Custom */}
           <motion.div
@@ -230,7 +231,7 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-8 rounded-3xl bg-[#1E293B] border border-white/5 hover:border-emerald-400 transition-all"
+            className="p-8 rounded-3xl bg-[#0F172A] border border-white/5 hover:border-emerald-400 transition-all"
           >
             <div className="text-emerald-400 font-bold uppercase text-xs mb-2">The Domination</div>
             <h3 className="text-2xl font-bold text-slate-50 mb-4">Custom</h3>
@@ -267,7 +268,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-12 bg-[#1E293B] relative border-t border-white/5">
+    <section id="contact" className="py-12 bg-[#0F172A] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Info */}
@@ -278,19 +279,19 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mt-4 mb-6">
-              Let's Build Something <br /><span className="text-sky-400">Extraordinary.</span>
+              Let's Build Something <br /><span className="text-indigo-400">Extraordinary.</span>
             </h2>
             <p className="text-slate-400 mb-8">
               Ready to transform your digital presence? Fill out the form, and I'll personally get back to you within 24 hours.
             </p>
             <div className="space-y-6 mt-8">
               <div className="flex items-center gap-4">
-                <span className="material-symbols-rounded text-sky-400 bg-[#0F172A] p-3 rounded-full">call</span>
+                <span className="material-symbols-rounded text-indigo-400 bg-[#020617] p-3 rounded-full">call</span>
                 <span className="text-slate-200 font-bold">+91 9453878422</span>
               </div>
               <div className="flex items-center gap-4">
-                <span className="material-symbols-rounded text-sky-400 bg-[#0F172A] p-3 rounded-full">mail</span>
-                <span className="text-slate-200 font-bold">support@smilefotilo.com</span>
+                <span className="material-symbols-rounded text-indigo-400 bg-[#020617] p-3 rounded-full">mail</span>
+                Brands in <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400">Gonda & Lucknow</span>
               </div>
               {/* Address Removed as requested */}
             </div>
@@ -302,32 +303,32 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-[#0F172A] p-8 rounded-3xl border border-white/5 shadow-lg"
+            className="bg-[#020617] p-8 rounded-3xl border border-white/5 shadow-lg"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name Input */}
                 <div>
                   <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Name</label>
-                  <input name="name" type="text" placeholder="Your Name" required className="w-full bg-[#1E293B] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-sky-400 outline-none transition-colors" />
+                  <input name="name" type="text" placeholder="Your Name" required className="w-full bg-[#0F172A] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-indigo-500 outline-none transition-colors" />
                 </div>
                 {/* Phone Input */}
                 <div>
                   <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Phone</label>
-                  <input name="phone" type="tel" placeholder="+91..." required className="w-full bg-[#1E293B] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-sky-400 outline-none transition-colors" />
+                  <input name="phone" type="tel" placeholder="+91..." required className="w-full bg-[#0F172A] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-indigo-500 outline-none transition-colors" />
                 </div>
               </div>
 
               {/* Email Input */}
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Email</label>
-                <input name="email" type="email" placeholder="hello@example.com" required className="w-full bg-[#1E293B] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-sky-400 outline-none transition-colors" />
+                <input name="email" type="email" placeholder="hello@example.com" required className="w-full bg-[#0F172A] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-indigo-500 outline-none transition-colors" />
               </div>
 
               {/* Project Type Dropdown - ADDED */}
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Project Type</label>
-                <select name="projectType" className="w-full bg-[#1E293B] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-sky-400 outline-none transition-colors">
+                <select name="projectType" className="w-full bg-[#0F172A] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-indigo-500 outline-none transition-colors">
                   <option>Web Development</option>
                   <option>E-Commerce Store</option>
                   <option>Product Photography</option>
@@ -339,10 +340,10 @@ const Contact = () => {
               {/* Message Textarea */}
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Message</label>
-                <textarea name="message" rows={4} placeholder="Tell us about your project goals..." required className="w-full bg-[#1E293B] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-sky-400 outline-none transition-colors"></textarea>
+                <textarea name="message" rows={4} placeholder="Tell us about your project goals..." required className="w-full bg-[#0F172A] border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:border-indigo-500 outline-none transition-colors"></textarea>
               </div>
 
-              <button type="submit" disabled={isPending} className="w-full py-4 rounded-xl bg-sky-400 text-[#0F172A] font-bold text-lg hover:bg-white transition-all shadow-lg hover:shadow-sky-500/20 disabled:opacity-50 disabled:cursor-not-allowed">
+              <button type="submit" disabled={isPending} className="w-full py-4 rounded-xl bg-indigo-500 text-white font-bold text-lg hover:bg-white hover:text-[#020617] transition-all shadow-lg hover:shadow-indigo-500/20 disabled:opacity-50 disabled:cursor-not-allowed">
                 {isPending ? 'Sending...' : 'Send Message'}
               </button>
 
@@ -363,7 +364,7 @@ const Contact = () => {
 
 export default function Home() {
   return (
-    <main className="bg-[#0F172A] min-h-screen text-slate-200 font-sans selection:bg-sky-400 selection:text-[#0F172A]">
+    <main className="bg-[#020617] min-h-screen text-slate-200 font-sans selection:bg-indigo-500 selection:text-white">
       <NavBar />
       <Hero />
       <Services />
@@ -373,6 +374,7 @@ export default function Home() {
       <Footer />
       <BackToTop />
       <CallPopup />
+      <CenterPopup />
     </main>
   );
 }
