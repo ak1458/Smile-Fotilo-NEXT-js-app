@@ -3,6 +3,9 @@
 import React, { useState, useTransition } from 'react';
 import { motion } from 'framer-motion';
 import { sendContactEmail } from './actions';
+import { NavBar } from './components/NavBar';
+import { Footer } from './components/Footer';
+import Link from 'next/link';
 
 // --- Configuration ---
 const theme = {
@@ -18,64 +21,11 @@ const theme = {
 
 // --- Components ---
 
-const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
-
-  return (
-    <nav className="fixed top-0 w-full z-50 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group" onClick={handleLinkClick}>
-            {/* Replaced text logo with Image */}
-            <img src="/logo.png" alt="Smile Fotilo Logo" className="h-10 w-auto object-contain" />
-          </a>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {['Home', 'Work', 'Services', 'About'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-medium text-slate-400 hover:text-sky-400 transition-colors">
-                {item}
-              </a>
-            ))}
-            <a href="#contact" className="px-5 py-2.5 rounded-full bg-sky-400 text-[#0F172A] font-bold text-sm hover:bg-white transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:-translate-y-0.5">
-              Start Project
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-slate-100 p-2">
-            <span className="material-symbols-rounded text-3xl">menu</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-[#1E293B] border-t border-white/5 absolute w-full">
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            {['Home', 'Work', 'Services', 'About'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} onClick={handleLinkClick} className="block px-3 py-3 text-base font-medium text-slate-300 hover:bg-[#0F172A] rounded-md">
-                {item}
-              </a>
-            ))}
-            <a href="#contact" onClick={handleLinkClick} className="block mt-4 text-center px-3 py-3 text-base font-bold bg-sky-400 text-[#0F172A] rounded-md">
-              Start Project
-            </a>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
+// NavBar component removed (imported)
 
 const Hero = () => {
   return (
-    <section id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center bg-[#0F172A]">
+    <section id="home" className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden min-h-screen flex items-center bg-[#0F172A]">
       {/* Anti-Gravity Background Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -118,7 +68,7 @@ const Hero = () => {
           className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed"
         >
           Web Design. SEO. Strategic Branding. <br />
-          The agency behind <span className="text-emerald-400 font-semibold border-b border-emerald-400/30">PulseKart</span>.
+          The agency behind <span className="text-emerald-400 font-semibold border-b border-emerald-400/30">successful digital brands</span>.
         </motion.p>
 
         <motion.div
@@ -147,7 +97,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-[#0F172A] relative">
+    <section id="services" className="py-16 bg-[#0F172A] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -186,13 +136,13 @@ const Services = () => {
 
 const Portfolio = () => {
   const projects = [
-    { title: 'PulseKart', category: 'Own Venture', desc: 'Complete E-commerce Architecture.', img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80' },
+    { title: 'PulseKart', category: 'Own Venture', desc: 'Complete E-commerce Architecture.', img: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=800&q=80' },
     { title: 'KapdaFactory', category: 'E-Commerce', desc: 'Scale Up & Optimization.', img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80' },
-    { title: 'City Care Clinic', category: 'Brand Identity', desc: 'Booking System & SEO.', img: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80' },
+    { title: 'Veloria Vault', category: 'Luxury Brand', desc: 'Premium Leather Bags Store.', img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80' },
   ];
 
   return (
-    <section id="work" className="py-24 bg-[#0F172A]">
+    <section id="work" className="py-16 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -232,7 +182,7 @@ const Portfolio = () => {
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-24 bg-[#0F172A]">
+    <section id="pricing" className="py-16 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -256,7 +206,7 @@ const Pricing = () => {
             <div className="text-sky-400 font-bold uppercase text-xs mb-2">The Starter</div>
             <h3 className="text-2xl font-bold text-slate-50 mb-4">₹15k <span className="text-sm text-slate-400 font-normal">/ project</span></h3>
             <p className="text-sm text-slate-400 mb-8">For doctors, clinics, or small shops needing a professional face.</p>
-            <button className="block w-full py-3 rounded-xl border border-white/10 text-center font-bold text-slate-50 hover:bg-sky-400 hover:text-[#0F172A] transition-colors">Get Started</button>
+            <Link href="/pricing" className="block w-full py-3 rounded-xl border border-white/10 text-center font-bold text-slate-50 hover:bg-sky-400 hover:text-[#0F172A] transition-colors">Get Started</Link>
           </motion.div>
           {/* Growth */}
           <motion.div
@@ -270,7 +220,7 @@ const Pricing = () => {
             <div className="text-sky-400 font-bold uppercase text-xs mb-2">The Growth</div>
             <h3 className="text-2xl font-bold text-slate-50 mb-4">₹35k <span className="text-sm text-slate-400 font-normal">/ starting</span></h3>
             <p className="text-sm text-slate-400 mb-8">For retail brands ready to sell online. Dynamic content management.</p>
-            <button className="block w-full py-3 rounded-xl bg-sky-400 text-center font-bold text-[#0F172A] hover:bg-white transition-colors">Choose Growth</button>
+            <Link href="/pricing" className="block w-full py-3 rounded-xl bg-sky-400 text-center font-bold text-[#0F172A] hover:bg-white transition-colors">Choose Growth</Link>
           </motion.div>
           {/* Custom */}
           <motion.div
@@ -283,7 +233,7 @@ const Pricing = () => {
             <div className="text-emerald-400 font-bold uppercase text-xs mb-2">The Domination</div>
             <h3 className="text-2xl font-bold text-slate-50 mb-4">Custom</h3>
             <p className="text-sm text-slate-400 mb-8">Full stack solution. From product photography to running ads.</p>
-            <button className="block w-full py-3 rounded-xl border border-white/10 text-center font-bold text-slate-50 hover:bg-emerald-400 hover:text-[#0F172A] transition-colors">Contact Sales</button>
+            <a href="#contact" className="block w-full py-3 rounded-xl border border-white/10 text-center font-bold text-slate-50 hover:bg-emerald-400 hover:text-[#0F172A] transition-colors">Contact Sales</a>
           </motion.div>
         </div>
       </div>
@@ -309,7 +259,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#1E293B] relative border-t border-white/5">
+    <section id="contact" className="py-16 bg-[#1E293B] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Info */}
@@ -401,18 +351,7 @@ const Contact = () => {
   );
 };
 
-const Footer = () => (
-  <footer className="bg-black border-t border-white/10 pt-16 pb-8 text-center text-slate-500 text-sm">
-    <div className="max-w-7xl mx-auto px-4">
-      <p className="mb-4 flex justify-center gap-6">
-        <a href="#" className="hover:text-sky-400 transition-colors">Instagram</a>
-        <a href="#" className="hover:text-sky-400 transition-colors">LinkedIn</a>
-        <a href="#" className="hover:text-sky-400 transition-colors">Facebook</a>
-      </p>
-      <p>&copy; 2025 Smile Fotilo. Created by Smile fotilo.</p>
-    </div>
-  </footer>
-);
+// Footer component removed (imported)
 
 export default function Home() {
   return (
