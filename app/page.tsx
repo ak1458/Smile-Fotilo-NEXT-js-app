@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useTransition } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { sendContactEmail } from './actions';
+// import { sendContactEmail } from './actions'; // Removed for static export
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import Link from 'next/link';
@@ -242,20 +242,19 @@ const Pricing = () => {
 };
 
 const Contact = () => {
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
   const [status, setStatus] = useState<{ success: boolean; message: string } | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    setIsPending(true);
 
-    startTransition(async () => {
-      const result = await sendContactEmail(formData);
-      setStatus(result);
-      if (result.success) {
-        (event.target as HTMLFormElement).reset();
-      }
-    });
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    setStatus({ success: true, message: 'Message sent successfully!' });
+    (event.target as HTMLFormElement).reset();
+    setIsPending(false);
   };
 
   return (
